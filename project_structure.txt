@@ -1,0 +1,61 @@
+.
+├── README.md
+├── components.json
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── project_structure.txt
+├── public
+│   ├── favicon.svg
+│   └── icons.svg
+├── src
+│   ├── App.css
+│   ├── App.tsx
+│   ├── api
+│   │   └── postsApi.ts
+│   ├── assets
+│   │   ├── hero.png
+│   │   ├── react.svg
+│   │   └── vite.svg
+│   ├── components
+│   │   ├── About.tsx
+│   │   ├── Button.tsx
+│   │   ├── Contact.tsx
+│   │   ├── Experience.tsx
+│   │   ├── ExperienceCard.tsx
+│   │   ├── Hero.tsx
+│   │   ├── LinkButton.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── ProjectCard.tsx
+│   │   ├── Projects.tsx
+│   │   ├── SkillCard.tsx
+│   │   ├── Skills.tsx
+│   │   └── ui
+│   │       ├── button.tsx
+│   │       └── select.tsx
+│   ├── context
+│   │   └── ThemeContext.tsx
+│   ├── data
+│   │   ├── projects.ts
+│   │   └── skills.ts
+│   ├── index.css
+│   ├── lib
+│   │   ├── axios.ts
+│   │   └── utils.ts
+│   ├── main.tsx
+│   ├── pages
+│   │   ├── Home.tsx
+│   │   ├── PostsPage.tsx
+│   │   ├── ProjectDetailsPage.tsx
+│   │   └── ProjectsPage.tsx
+│   └── types
+│       ├── experience.ts
+│       ├── project.ts
+│       └── skill.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+
+12 directories, 47 files
