@@ -1,5 +1,4 @@
 import type { Skill } from "../types/skill";
-import SkillCard from "./SkillCard";
 
 type SkillsProps = {
   skills: Skill[];

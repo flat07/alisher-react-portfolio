@@ -1,12 +1,13 @@
 import About from "../components/About";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import Experience from "../components/Experience";
-import Projects from "../components/Projects";
-import { projects } from "../data/projects";
-import Skills from "../components/Skills";
-import { skills } from "../data/skills";
 import Contact from "../components/Contact";
+import Experience from "../components/Experience";
+import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import Navbar from "../components/Navbar";
+import Projects from "../components/Projects";
+import Skills from "../components/Skills";
+import { projects } from "../data/projects";
+import { skills } from "../data/skills";
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
       <Projects projects={projects} />
       <Experience />
       <Contact />
+      <Footer />
     </main>
   );
 }

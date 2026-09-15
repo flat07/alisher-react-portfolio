@@ -54,13 +54,13 @@ function Navbar() {
           </div>
 
           <div className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-            <Link to="/#about" className="hover:text-foreground">
+            <a href="#about" className="hover:text-foreground">
               About
-            </Link>
+            </a>
 
-            <Link to="/#skills" className="hover:text-foreground">
+            <a href="#skills" className="hover:text-foreground">
               Skills
-            </Link>
+            </a>
 
             <NavLink
               to="/projects"
@@ -73,13 +73,13 @@ function Navbar() {
               Projects
             </NavLink>
 
-            <Link to="/#experience" className="hover:text-foreground">
+            <a href="#experience" className="hover:text-foreground">
               Experience
-            </Link>
+            </a>
 
-            <Link to="/#contact" className="hover:text-foreground">
+            <a href="#contact" className="hover:text-foreground">
               Contact
-            </Link>
+            </a>
 
             <NavLink to="/posts" className="hover:text-foreground">
               Posts
@@ -89,21 +89,21 @@ function Navbar() {
           {isMenuOpen && (
             <div className="absolute left-0 right-0 top-[73px] border-b border-border bg-background px-6 py-6 text-sm text-muted-foreground md:hidden">
               <div className="mx-auto flex max-w-6xl flex-col gap-4">
-                <Link
-                  to="/#about"
+                <a
+                  href="#about"
                   className="hover:text-foreground"
                   onClick={closeMenu}
                 >
                   About
-                </Link>
+                </a>
 
-                <Link
-                  to="/#skills"
+                <a
+                  href="#skills"
                   className="hover:text-foreground"
                   onClick={closeMenu}
                 >
                   Skills
-                </Link>
+                </a>
 
                 <NavLink
                   to="/projects"
@@ -117,21 +117,21 @@ function Navbar() {
                   Projects
                 </NavLink>
 
-                <Link
-                  to="/#experience"
+                <a
+                  href="#experience"
                   className="hover:text-foreground"
                   onClick={closeMenu}
                 >
                   Experience
-                </Link>
+                </a>
 
-                <Link
-                  to="/#contact"
+                <a
+                  href="#contact"
                   className="hover:text-foreground"
                   onClick={closeMenu}
                 >
                   Contact
-                </Link>
+                </a>
 
                 <NavLink to="/posts" onClick={closeMenu}>
                   Posts

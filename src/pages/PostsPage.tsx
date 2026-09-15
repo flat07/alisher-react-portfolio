@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { getPosts } from "../api/postsApi";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 function PostsPage() {
@@ -26,6 +27,7 @@ function PostsPage() {
             </div>
           </div>
         </main>
+        <Footer />
       </>
     );
   }
@@ -39,6 +41,7 @@ function PostsPage() {
             <p className="text-destructive">Failed to load posts.</p>
           </div>
         </main>
+        <Footer />
       </>
     );
   }
@@ -75,6 +78,7 @@ function PostsPage() {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

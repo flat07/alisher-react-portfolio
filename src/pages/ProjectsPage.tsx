@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type { Project } from "../types/project";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { projects } from "../data/projects";
 
@@ -59,6 +59,7 @@ function ProjectsPage() {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
