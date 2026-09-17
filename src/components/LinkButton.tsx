@@ -1,37 +1,47 @@
+// src/components/LinkButton.tsx
 import type { ReactNode } from "react";
 
 type LinkButtonProps = {
   children: ReactNode;
   href: string;
   variant?: "primary" | "secondary";
+  icon?: ReactNode;
 };
 
-function LinkButton({ children, href, variant = "primary" }: LinkButtonProps) {
+function LinkButton({
+  children,
+  href,
+  variant = "primary",
+  icon,
+}: LinkButtonProps) {
   const styles =
     variant === "primary"
-      ? "bg-primary text-primary-foreground hover:bg-primary/90"
-      : "border border-border bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground";
+      ? "bg-gradient-to-r from-[#6366f1] via-[#8b5cf6] to-[#a855f7] text-white shadow-lg shadow-indigo-500/25 hover:opacity-95"
+      : "border border-white/20 bg-white/5 text-white backdrop-blur-md hover:border-white/40 hover:bg-white/10";
 
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
       className={`
-        inline-block
-        rounded-lg
-        px-5
+        inline-flex
+        items-center
+        justify-center
+        gap-2.5
+        rounded-xl
+        px-6
         py-3
+        text-sm
         font-medium
-        transition
+        transition-all
         duration-200
         hover:-translate-y-0.5
         focus:outline-none
         focus:ring-2
-        focus:ring-ring
+        focus:ring-indigo-400
         ${styles}
       `}
     >
+      {icon && <span className="h-4 w-4 shrink-0">{icon}</span>}
       {children}
     </a>
   );
