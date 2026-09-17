@@ -1,4 +1,5 @@
 import type { Experience } from "../types/experience";
+import Span from "./Span";
 
 type ExperienceCardProps = Experience;
 
@@ -15,30 +16,23 @@ function ExperienceCard({
     <article>
       <div>
         <div>
-          <h3 className="text-xl font-semibold text-foreground">{position}</h3>
+          <h3 className="text-xl font-semibold text-white/60">{position}</h3>
 
-          <p className="mt-1 text-muted-foreground">
+          <p className="mt-1 text-white/60">
             {company} · {location}
           </p>
         </div>
 
-        <p className="text-sm text-muted-foreground/70">
+        <p className="text-sm text-white/50">
           {startDate} — {endDate || "Present"}
         </p>
       </div>
 
-      <p className="mt-5 max-w-3xl leading-7 text-muted-foreground">
-        {description}
-      </p>
+      <p className="mt-5 max-w-3xl leading-7 text-white/60">{description}</p>
 
       <div className="mt-5 flex flex-wrap justify-center gap-2">
         {technologies.map((technology) => (
-          <span
-            key={technology}
-            className="rounded-md bg-muted px-3 py-1 text-sm text-muted-foreground"
-          >
-            {technology}
-          </span>
+          <Span key={technology}>{technology}</Span>
         ))}
       </div>
     </article>

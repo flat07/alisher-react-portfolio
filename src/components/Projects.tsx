@@ -10,13 +10,13 @@ function Projects({ projects }: ProjectsProps) {
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-24">
       <div className="mb-12 mx-auto flex flex-col items-center text-center">
-        <p className="text-sm font-medium text-muted-foreground">My work</p>
+        <p className="text-sm font-medium text-white/60">My work</p>
 
-        <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="mt-2 text-3xl font-bold tracking-tight text-white/60 sm:text-4xl">
           Featured Projects
         </h2>
 
-        <p className="mt-4 max-w-2xl text-muted-foreground">
+        <p className="mt-4 max-w-2xl text-white/60">
           A selection of projects I've built while learning and working with
           modern web technologies.
         </p>

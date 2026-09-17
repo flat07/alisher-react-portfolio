@@ -1,5 +1,4 @@
 import { ArrowUpRight, Mail } from "lucide-react";
-import heroImage from "../assets/hero.jpg";
 import LinkButton from "./LinkButton";
 
 function Hero() {
@@ -31,44 +30,9 @@ function Hero() {
   ];
 
   return (
-    <section className="relative isolate min-h-screen overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden">
       {/* =========================================================
-          BACKGROUND
-      ========================================================= */}
-
-      <div
-        className="absolute inset-0 -z-30 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-        }}
-      />
-
-      <div className="absolute inset-0 -z-20 bg-[#06152e]/65" />
-
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#06152e]/95 via-[#06152e]/70 to-[#06152e]/20" />
-
-      {/* Bottom fade */}
-      <div className="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-background to-transparent" />
-
-      {/* =========================================================
-          ANIMATED LIGHT GLOWS
-      ========================================================= */}
-
-      <div className="hero-glow hero-glow-one" />
-      <div className="hero-glow hero-glow-two" />
-
-      {/* =========================================================
-          FLOATING DECORATIONS
-      ========================================================= */}
-
-      <div className="hero-orb hero-orb-one" />
-      <div className="hero-orb hero-orb-two" />
-      <div className="hero-orb hero-orb-three" />
-
-      <div className="hero-line" />
-
-      {/* =========================================================
-          CONTENT
+          HERO CONTENT
       ========================================================= */}
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1400px] items-center px-6 py-16 sm:px-8 sm:py-20 lg:px-10">
@@ -142,48 +106,6 @@ function Hero() {
             ))}
           </div>
         </div>
-      </div>
-
-      {/* =========================================================
-          SCROLL INDICATOR
-      ========================================================= */}
-
-      <a
-        href="#about"
-        className="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-1.5 text-white/60 transition-colors hover:text-white"
-      >
-        <span className="text-[10px] uppercase tracking-[0.25em]">Scroll</span>
-
-        <span className="flex h-8 w-5 items-start justify-center rounded-full border border-white/30 p-1">
-          <span className="h-1.5 w-0.5 animate-bounce rounded-full bg-white" />
-        </span>
-      </a>
-
-      {/* =========================================================
-          WAVY BOTTOM
-      ========================================================= */}
-
-      <div className="absolute bottom-0 left-0 z-20 w-full overflow-hidden leading-[0]">
-        <svg
-          className="relative block h-20 w-full"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="
-              M0,70
-              C180,55 300,45 450,65
-              C570,82 650,110 780,95
-              C900,80 1000,40 1140,50
-              C1260,58 1350,75 1440,60
-              L1440,120
-              L0,120
-              Z
-            "
-            className="fill-background"
-          />
-        </svg>
       </div>
     </section>
   );

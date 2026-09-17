@@ -1,3 +1,4 @@
+import Span from "./Span";
 const skills = ["Python", "Django", "React", "TypeScript"];
 
 function About() {
@@ -5,15 +6,15 @@ function About() {
     <section id="about" className="mx-auto max-w-6xl px-6 py-24">
       <div className="mx-auto flex flex-col items-center text-center">
         <div>
-          <p className="text-sm font-medium text-muted-foreground">About me</p>
+          <p className="text-sm font-medium text-white/60">About me</p>
 
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-white/60 sm:text-4xl">
             Building useful web applications
           </h2>
         </div>
 
         <div>
-          <div className="space-y-6 text-lg leading-8 text-muted-foreground">
+          <div className="space-y-6 text-lg leading-8 text-white/60">
             <p>
               I'm a developer focused on building modern web applications with
               Python, Django, React and TypeScript.
@@ -33,12 +34,7 @@ function About() {
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {skills.map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full border border-border px-4 py-2 text-sm text-muted-foreground"
-              >
-                {skill}
-              </span>
+              <Span key={skill}>{skill}</Span>
             ))}
           </div>
         </div>
