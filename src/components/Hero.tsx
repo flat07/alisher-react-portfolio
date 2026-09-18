@@ -52,7 +52,7 @@ function Hero() {
           </p>
 
           {/* Heading */}
-          <h1 className="hero-fade-up mt-3 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl [animation-delay:200ms]">
+          <h1 className="hero-fade-up mt-3 text-4xl font-bold tracking-tight text-white/60 sm:text-5xl lg:text-6xl [animation-delay:200ms]">
             I build modern
             <br />
             <span className="hero-gradient-text">web experiences.</span>

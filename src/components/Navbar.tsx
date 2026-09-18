@@ -1,6 +1,7 @@
-import { Monitor, Moon, Sun } from "lucide-react";
-import { useState } from "react";
+import { Menu, Monitor, Moon, Sun, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import AK from "../assets/ak-icon.png";
 
 import { useTheme } from "../context/ThemeContext";
 import {
@@ -18,7 +19,7 @@ function Navbar() {
   const { theme, setTheme } = useTheme();
   const location = useLocation();
 
-  const isHomePage = location.pathname === "/";
+  const navbarRef = useRef<HTMLElement>(null);
 
   function closeMenu() {
     setIsMenuOpen(false);
@@ -41,13 +42,35 @@ function Navbar() {
     return <Monitor className="h-4 w-4" />;
   }
 
+  // Close mobile menus when clicking outside the navbar
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        navbarRef.current &&
+        !navbarRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+        setIsThemeMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Close mobile menu when navigating to another route
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setIsThemeMenuOpen(false);
+  }, [location.pathname]);
+
   return (
     <nav
-      className={
-        isHomePage
-          ? "absolute inset-x-0 top-0 z-50 bg-transparent text-white"
-          : "relative z-50 border-b border-border bg-background text-foreground"
-      }
+      ref={navbarRef}
+      className="absolute inset-x-0 top-0 z-50 bg-transparent text-white"
     >
       <div className="mx-auto max-w-7xl px-6 py-6">
         <div className="flex items-center justify-between">
@@ -57,7 +80,11 @@ function Navbar() {
             className="text-2xl font-bold tracking-tight"
             onClick={closeMenu}
           >
-            Alisher
+            <img
+              src={AK}
+              alt="AK Logo"
+              className="h-9 w-auto rounded-lg object-contain"
+            />
           </Link>
 
           {/* ============================= */}
@@ -67,23 +94,15 @@ function Navbar() {
           <div className="hidden items-center gap-8 md:flex">
             <div className="flex items-center gap-8 text-sm">
               <a
-                href="#about"
-                className={
-                  isHomePage
-                    ? "text-white/80 transition hover:text-white"
-                    : "text-muted-foreground transition hover:text-foreground"
-                }
+                href="/#about"
+                className="text-white/80 transition hover:text-white"
               >
                 About
               </a>
 
               <a
-                href="#skills"
-                className={
-                  isHomePage
-                    ? "text-white/80 transition hover:text-white"
-                    : "text-muted-foreground transition hover:text-foreground"
-                }
+                href="/#skills"
+                className="text-white/80 transition hover:text-white"
               >
                 Skills
               </a>
@@ -91,46 +110,34 @@ function Navbar() {
               <NavLink
                 to="/projects"
                 className={({ isActive }) =>
-                  isHomePage
-                    ? isActive
-                      ? "text-white"
-                      : "text-white/80 transition hover:text-white"
-                    : isActive
-                      ? "text-foreground"
-                      : "text-muted-foreground transition hover:text-foreground"
+                  isActive
+                    ? "text-white/95 transition hover:text-white"
+                    : "text-white/80 transition hover:text-white"
                 }
               >
                 Projects
               </NavLink>
 
               <a
-                href="#experience"
-                className={
-                  isHomePage
-                    ? "text-white/80 transition hover:text-white"
-                    : "text-muted-foreground transition hover:text-foreground"
-                }
+                href="/#experience"
+                className="text-white/80 transition hover:text-white"
               >
                 Experience
               </a>
 
               <a
-                href="#contact"
-                className={
-                  isHomePage
-                    ? "text-white/80 transition hover:text-white"
-                    : "text-muted-foreground transition hover:text-foreground"
-                }
+                href="/#contact"
+                className="text-white/80 transition hover:text-white"
               >
                 Contact
               </a>
 
               <NavLink
                 to="/posts"
-                className={
-                  isHomePage
-                    ? "text-white/80 transition hover:text-white"
-                    : "text-muted-foreground transition hover:text-foreground"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-white/95 transition hover:text-white"
+                    : "text-white/80 transition hover:text-white"
                 }
               >
                 Posts
@@ -144,13 +151,7 @@ function Navbar() {
                 setTheme(value as "light" | "dark" | "system")
               }
             >
-              <SelectTrigger
-                className={
-                  isHomePage
-                    ? "h-11 w-[158px] rounded-full border-white/20 bg-white/5 px-4 text-white backdrop-blur-sm hover:bg-white/10"
-                    : "h-11 w-[140px] rounded-full"
-                }
-              >
+              <SelectTrigger className="h-11 w-[158px] rounded-full border-white/20 bg-white/5 px-4 text-white backdrop-blur-sm hover:bg-white/10">
                 <SelectValue />
               </SelectTrigger>
 
@@ -190,25 +191,15 @@ function Navbar() {
                 type="button"
                 aria-label="Change theme"
                 aria-expanded={isThemeMenuOpen}
-                onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
-                className={
-                  isHomePage
-                    ? "flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-sm transition hover:bg-white/10"
-                    : "flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background transition hover:bg-accent"
-                }
+                onClick={() => setIsThemeMenuOpen((open) => !open)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-sm transition hover:bg-white/10"
               >
                 {getThemeIcon()}
               </button>
 
               {/* Mobile theme dropdown */}
               {isThemeMenuOpen && (
-                <div
-                  className={
-                    isHomePage
-                      ? "absolute right-0 top-12 z-50 w-36 rounded-xl border border-white/10 bg-black/80 p-1 text-sm text-white shadow-xl backdrop-blur-xl"
-                      : "absolute right-0 top-12 z-50 w-36 rounded-xl border border-border bg-background p-1 text-sm shadow-xl"
-                  }
-                >
+                <div className="absolute right-0 top-12 z-50 w-36 rounded-xl border border-white/10 bg-black/80 p-1 text-sm text-white shadow-xl backdrop-blur-xl">
                   <button
                     type="button"
                     onClick={() => changeTheme("system")}
@@ -242,14 +233,16 @@ function Navbar() {
             {/* Mobile menu button */}
             <button
               type="button"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={
-                isHomePage
-                  ? "rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white backdrop-blur-sm"
-                  : "rounded-full border border-border px-4 py-2 text-sm"
-              }
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+              onClick={() => setIsMenuOpen((open) => !open)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-sm transition hover:bg-white/10"
             >
-              {isMenuOpen ? "Close" : "Menu"}
+              {isMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </button>
           </div>
         </div>
@@ -259,19 +252,13 @@ function Navbar() {
         {/* ============================= */}
 
         {isMenuOpen && (
-          <div
-            className={
-              isHomePage
-                ? "mt-6 rounded-2xl border border-white/10 bg-black/40 p-6 text-sm text-white backdrop-blur-xl md:hidden"
-                : "mt-6 rounded-2xl border border-border bg-background p-6 text-sm md:hidden"
-            }
-          >
+          <div className="mt-6 rounded-2xl border border-white/10 bg-black/40 p-6 text-sm text-white backdrop-blur-xl md:hidden">
             <div className="flex flex-col gap-5">
-              <a href="#about" onClick={closeMenu}>
+              <a href="/#about" onClick={closeMenu}>
                 About
               </a>
 
-              <a href="#skills" onClick={closeMenu}>
+              <a href="/#skills" onClick={closeMenu}>
                 Skills
               </a>
 
@@ -279,11 +266,11 @@ function Navbar() {
                 Projects
               </NavLink>
 
-              <a href="#experience" onClick={closeMenu}>
+              <a href="/#experience" onClick={closeMenu}>
                 Experience
               </a>
 
-              <a href="#contact" onClick={closeMenu}>
+              <a href="/#contact" onClick={closeMenu}>
                 Contact
               </a>
 
